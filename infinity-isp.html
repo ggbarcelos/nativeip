@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Infinity ISP — A solução completa para provedores de internet | NativeIP</title>
+  <meta name="description" content="Plataforma 100% especializada para provedores de internet. PABX IP com integração Voalle, IXC, MK, Hubsoft e mais. Call Center, IA, Discador e Módulo de Cobrança.">
+  <link rel="icon" href="img/cropped-Favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ── Infinity ISP — page styles ────────────────────────── */
+    .isp-hero {
+      background:
+        linear-gradient(110deg, rgba(10,37,64,.9) 0%, rgba(10,37,64,.65) 55%, rgba(0,102,255,.2) 100%),
+        url('img/Capa-Infinity.jpg') center/cover no-repeat;
+      padding: 88px 0 80px; overflow: hidden;
+    }
+    .isp-hero-center {
+      max-width: 780px; margin: 0 auto; text-align: center; color: #fff;
+    }
+    .isp-hero-center .label { background: rgba(0,102,255,.3); color: #93C5FD; }
+    .isp-hero-center h1 {
+      font-size: clamp(32px,4.5vw,58px); font-weight: 800;
+      line-height: 1.1; margin: 16px 0 20px; letter-spacing: -.02em;
+    }
+    .isp-hero-center h1 span { color: #60A5FA; }
+    .isp-hero-center > p { font-size: 18px; color: rgba(255,255,255,.78); line-height: 1.75; margin-bottom: 32px; }
+    .isp-hero-btns { justify-content: center; }
+    .isp-hero-text h1 {
+      font-size: clamp(32px,4.5vw,54px); font-weight: 800;
+      line-height: 1.1; margin: 16px 0 20px; letter-spacing: -.02em;
+    }
+    .isp-hero-text h1 span { color: #60A5FA; }
+    .isp-hero-text p { font-size: 17px; color: rgba(255,255,255,.78); line-height: 1.75; margin-bottom: 32px; }
+    .isp-features {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 36px;
+    }
+    .isp-feat {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 500; color: rgba(255,255,255,.85);
+    }
+    .isp-feat svg { flex-shrink: 0; color: #34D399; }
+    .isp-hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+    /* hero visual — mockup card */
+    .isp-hero-visual {
+      position: relative; display: flex; align-items: center; justify-content: center;
+    }
+    .isp-hero-img {
+      border-radius: 16px; overflow: hidden;
+      box-shadow: 0 24px 64px rgba(0,0,0,.45);
+      border: 1px solid rgba(255,255,255,.1);
+      width: 100%;
+    }
+    .isp-hero-img img { width: 100%; height: auto; display: block; }
+    .isp-float-badge {
+      position: absolute; bottom: -16px; left: -16px;
+      background: #fff; border-radius: 12px; padding: 14px 18px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.15);
+      display: flex; align-items: center; gap: 10px;
+      font-size: 13px; font-weight: 700; color: var(--blue-dark);
+    }
+    .isp-float-badge .dot { width: 10px; height: 10px; border-radius: 50%; background: #10B981; flex-shrink: 0; box-shadow: 0 0 0 3px rgba(16,185,129,.2); }
+    @media (max-width: 1024px) { .isp-hero-inner { grid-template-columns: 1fr; gap: 40px; } }
+    @media (max-width: 600px)  { .isp-features { grid-template-columns: 1fr; } }
+
+    /* ── Recursos tabs ─────────────────────────────────────── */
+    .recursos-section { background: var(--white); }
+    .recursos-tabs { display: flex; gap: 4px; background: var(--bg); border-radius: 10px; padding: 6px; width: fit-content; margin: 0 auto 48px; flex-wrap: wrap; justify-content: center; }
+    .rec-tab {
+      display: flex; align-items: center; gap: 8px;
+      padding: 10px 20px; border-radius: 8px; border: none; cursor: pointer;
+      font-size: 13px; font-weight: 600; color: var(--muted); background: transparent;
+      transition: all .2s; white-space: nowrap;
+    }
+    .rec-tab.active { background: var(--white); color: var(--blue-dark); box-shadow: var(--shadow); }
+    .rec-panel { display: none; }
+    .rec-panel.active { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+    .rec-panel-text h3 { font-size: clamp(22px,3vw,32px); font-weight: 800; color: var(--blue-dark); margin-bottom: 16px; line-height: 1.2; }
+    .rec-panel-text p  { font-size: 16px; color: var(--muted); line-height: 1.75; margin-bottom: 20px; }
+    .rec-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+    .rec-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--text); }
+    .rec-list li svg { flex-shrink: 0; margin-top: 2px; }
+    .rec-panel-img { border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-hover); }
+    .rec-panel-img img { width: 100%; height: auto; display: block; }
+    @media (max-width: 1024px) { .rec-panel.active { grid-template-columns: 1fr; } }
+
+    /* ── IA Sentimentos ────────────────────────────────────── */
+    .ia-section {
+      background: var(--blue-dark); padding: 88px 0;
+      position: relative; overflow: hidden;
+    }
+    .ia-section::before {
+      content: ''; position: absolute; width: 600px; height: 600px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,102,255,.2) 0%, transparent 70%);
+      top: -200px; right: -100px; pointer-events: none;
+    }
+    .ia-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .ia-text { color: #fff; }
+    .ia-text .label { background: rgba(0,102,255,.3); color: #93C5FD; }
+    .ia-text h2 { font-size: clamp(26px,3.5vw,40px); font-weight: 800; margin: 16px 0 16px; line-height: 1.2; }
+    .ia-text p  { font-size: 16px; color: rgba(255,255,255,.72); line-height: 1.75; margin-bottom: 32px; }
+    .ia-cards { display: flex; flex-direction: column; gap: 16px; }
+    .ia-card {
+      background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1);
+      border-radius: 12px; padding: 20px 24px;
+      display: flex; align-items: flex-start; gap: 14px;
+      transition: background .2s;
+    }
+    .ia-card:hover { background: rgba(255,255,255,.11); }
+    .ia-card-icon { width: 40px; height: 40px; border-radius: 10px; background: rgba(0,102,255,.35); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .ia-card h4 { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+    .ia-card p  { font-size: 13px; color: rgba(255,255,255,.6); line-height: 1.55; }
+    .sentiment-pills { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+    .pill-pos { background: rgba(16,185,129,.2); color: #34D399; border: 1px solid rgba(16,185,129,.3); padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: 700; }
+    .pill-neu { background: rgba(251,191,36,.2);  color: #FCD34D; border: 1px solid rgba(251,191,36,.3);  padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: 700; }
+    .pill-neg { background: rgba(239,68,68,.2);   color: #FCA5A5; border: 1px solid rgba(239,68,68,.3);   padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: 700; }
+    @media (max-width: 1024px) { .ia-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+    /* ── ERPs strip ────────────────────────────────────────── */
+    .erp-section { background: var(--bg); padding: 56px 0; }
+    .erp-grid { display: grid; grid-template-columns: repeat(6,1fr); gap: 16px; margin-top: 40px; }
+    .erp-item { background: var(--white); border-radius: 12px; padding: 20px 16px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border); transition: all .2s; }
+    .erp-item:hover { border-color: #BFDBFE; box-shadow: 0 4px 12px rgba(0,102,255,.1); }
+    .erp-item img { height: 32px; width: auto; object-fit: contain; filter: grayscale(.3); transition: filter .2s; }
+    .erp-item:hover img { filter: grayscale(0); }
+    @media (max-width: 1024px) { .erp-grid { grid-template-columns: repeat(3,1fr); } }
+    @media (max-width: 600px)  { .erp-grid { grid-template-columns: repeat(2,1fr); } }
+  </style>
+</head>
+<body>
+
+<!-- Top bar -->
+<div class="nav-top-bar">
+  <div class="top-bar-left">
+    <a href="tel:08008003013"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>0800 800 3013</a>
+    <a href="mailto:comercial@nativeip.com.br"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>comercial@nativeip.com.br</a>
+  </div>
+  <div class="top-bar-social">
+    <a href="https://www.linkedin.com/company/nativeip" target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+    <a href="https://www.instagram.com/nativeip" target="_blank" rel="noopener" aria-label="Instagram"><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+    <a href="https://www.facebook.com/nativeip" target="_blank" rel="noopener" aria-label="Facebook"><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+  </div>
+</div>
+
+<!-- Navbar -->
+<header class="navbar">
+  <div class="container">
+    <nav class="nav-inner" aria-label="Navegação principal">
+      <a href="index.html" class="nav-logo">
+        <img src="img/Native.png" alt="NativeIP" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span>NativeIP</span>
+      </a>
+      <ul class="nav-links" id="navLinks" role="list">
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="infinity-isp.html" style="color:var(--blue)">Infinity</a></li>
+        <li><a href="index.html#solucoes">Soluções</a></li>
+        <li><a href="index.html#integracoes">Integrações</a></li>
+        <li><a href="index.html#blog">Blog</a></li>
+        <li><a href="parceiro.html">Seja Parceiro</a></li>
+        <li><a href="https://helpdesk.nativeip.com.br/v/" target="_blank" rel="noopener">Suporte</a></li>
+        <li><a href="index.html#contato">Contato</a></li>
+        <li class="nav-cta">
+          <a href="https://nativeip.com.br/demo-sistema-atendimento-native-isp-provedores-de-internet/" target="_blank" rel="noopener" class="btn btn-secondary">Agendar Demo ISP</a>
+          <a href="index.html#contato" class="btn btn-primary">Teste Grátis</a>
+        </li>
+      </ul>
+      <div class="nav-cta" id="navCta">
+        <a href="https://nativeip.com.br/demo-sistema-atendimento-native-isp-provedores-de-internet/" target="_blank" rel="noopener" class="btn btn-secondary">Agendar Demo ISP</a>
+        <a href="index.html#contato" class="btn btn-primary">Teste Grátis</a>
+      </div>
+      <button class="nav-hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ── Hero ─────────────────────────────────────────────── -->
+<section class="isp-hero">
+  <div class="container">
+    <div class="isp-hero-center fade-in">
+      <span class="label">Infinity ISP</span>
+      <h1>A solução completa para <span>provedores de internet</span></h1>
+      <p>Com mais de <strong style="color:#fff">8 anos de experiência</strong> no mercado de ISPs, a Native IP desenvolveu uma plataforma 100% especializada para atender as demandas desse segmento.</p>
+      <div class="isp-features">
+        <div class="isp-feat"><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Identificação por CPF/CNPJ</div>
+        <div class="isp-feat"><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Envio de 2ª via de boletos</div>
+        <div class="isp-feat"><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Aviso de falha massiva</div>
+        <div class="isp-feat"><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Desbloqueio em confiança</div>
+        <div class="isp-feat"><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Pop-up de tela do ERP</div>
+        <div class="isp-feat"><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Abertura automática de tickets</div>
+        <div class="isp-feat"><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Identificação de inadimplentes</div>
+        <div class="isp-feat"><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Click to call</div>
+      </div>
+      <div class="isp-hero-btns">
+        <a href="https://nativeip.com.br/demo-sistema-atendimento-native-isp-provedores-de-internet/" target="_blank" rel="noopener" class="btn btn-primary">Agendar Demo ISP</a>
+        <a href="index.html#contato" class="btn btn-outline-white">Teste Grátis</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ERPs ──────────────────────────────────────────────── -->
+<section class="erp-section">
+  <div class="container text-center">
+    <span class="label fade-in">Integrações Nativas</span>
+    <h2 class="section-title fade-in">Integrado com os principais ERPs do mercado</h2>
+    <p class="section-sub fade-in">Conecte o Infinity ISP ao seu sistema de gestão e automatize o atendimento com dados em tempo real.</p>
+    <div class="erp-grid fade-in">
+      <div class="erp-item"><img src="img/grupo-voalle-logo-new.png" alt="Voalle"></div>
+      <div class="erp-item"><img src="img/ixc-soft-logo-new.png" alt="IXC Soft"></div>
+      <div class="erp-item"><img src="img/logo-jpg-mk-solutions-1.jpg" alt="MK Solutions"></div>
+      <div class="erp-item"><img src="img/hubsoft-logo-new-1.png" alt="Hubsoft"></div>
+      <div class="erp-item"><img src="img/logo-jpg-rbx-soft-1.jpg" alt="RBX Soft"></div>
+      <div class="erp-item"><img src="img/elite-soft-logo-new.png" alt="Elite Soft"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Recursos com Tabs ──────────────────────────────────── -->
+<section class="section recursos-section" id="recursos">
+  <div class="container">
+    <div class="text-center">
+      <span class="label fade-in">Plataforma Completa</span>
+      <h2 class="section-title fade-in">Seu provedor está pronto para ir além?</h2>
+      <p class="section-sub fade-in">A plataforma Native Infinity conta com uma série de recursos para transformar a comunicação com seu cliente.</p>
+    </div>
+
+    <div class="recursos-tabs fade-in" role="tablist">
+      <button class="rec-tab active" data-panel="callcenter" role="tab" aria-selected="true">
+        <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+        Call Center
+      </button>
+      <button class="rec-tab" data-panel="comercial" role="tab" aria-selected="false">
+        <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        Comercial
+      </button>
+      <button class="rec-tab" data-panel="discador" role="tab" aria-selected="false">
+        <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        Discador Automático
+      </button>
+      <button class="rec-tab" data-panel="cobranca" role="tab" aria-selected="false">
+        <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        Módulo de Cobrança
+      </button>
+      <button class="rec-tab" data-panel="relatorios" role="tab" aria-selected="false">
+        <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+        Relatórios
+      </button>
+    </div>
+
+    <!-- Call Center -->
+    <div class="rec-panel active" id="panel-callcenter">
+      <div class="rec-panel-text fade-in">
+        <h3>Monitoramento e gestão eficiente do atendimento</h3>
+        <p>O Infinity ISP conta com um sistema de Call Center integrado, permitindo o monitoramento detalhado de todas as interações telefônicas entre clientes e agentes. Com um dashboard em tempo real, os gestores acompanham a operação por meio de indicadores essenciais:</p>
+        <ul class="rec-list">
+          <li><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#0066FF" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span><strong>TME</strong> – Tempo Médio de Espera</span></li>
+          <li><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#0066FF" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span><strong>TMA</strong> – Tempo Médio de Atendimento</span></li>
+          <li><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#0066FF" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span><strong>TMAB</strong> – Tempo Médio de Atendimento por Agente</span></li>
+          <li><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#0066FF" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span>Ligações perdidas e atendidas</span></li>
+          <li><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#0066FF" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span>Status de agentes e filas de espera</span></li>
+          <li><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#0066FF" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span>Metas de qualidade e pausas dos agentes</span></li>
+        </ul>
+        <a href="index.html#contato" class="btn btn-primary">Quero conhecer</a>
+      </div>
+      <div class="rec-panel-img fade-in" style="transition-delay:.1s">
+        <img src="img/monitoramento-native-min.jpg" alt="Call Center Infinity ISP">
+      </div>
+    </div>
+
+    <!-- Comercial -->
+    <div class="rec-panel" id="panel-comercial">
+      <div class="rec-panel-text fade-in">
+        <h3>Impulsione a Performance do Seu Time Comercial</h3>
+        <p>O Infinity ISP oferece uma solução completa para monitorar e otimizar o desempenho do seu time comercial. Com monitoramento em tempo real, é possível acompanhar todas as chamadas, identificar ligações atendidas e perdidas e analisar quais agentes apresentam melhor performance.</p>
+        <ul class="rec-list">
+          <li><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#0066FF" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span>Monitoramento de chamadas em tempo real</span></li>
+          <li><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#0066FF" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span>Ranking de performance por agente</span></li>
+          <li><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#0066FF" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span>Relatórios de conversão e produtividade</span></li>
+        </ul>
+        <a href="index.html#contato" class="btn btn-primary">Quero conhecer</a>
+      </div>
+      <div class="rec-panel-img fade-in" style="transition-delay:.1s">
+        <img src="img/vendas-min.jpg" alt="Gestão Comercial Infinity ISP">
+      </div>
+    </div>
+
+    <!-- Discador -->
+    <div class="rec-panel" id="panel-discador">
+      <div class="rec-panel-text fade-in">
+        <h3>Automação Inteligente de Campanhas</h3>
+        <p>Aumente a eficiência das suas operações com o discador automático preditivo, que permite automatizar campanhas de vendas e refidelização de clientes, otimizando o tempo da equipe e maximizando resultados.</p>
+        <ul class="rec-list">
+          <li><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#0066FF" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span>Discador preditivo automático</span></li>
+          <li><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#0066FF" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span>Campanhas de vendas e refidelização</span></li>
+          <li><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#0066FF" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span>Otimização do tempo da equipe</span></li>
+        </ul>
+        <a href="index.html#contato" class="btn btn-primary">Quero conhecer</a>
+      </div>
+      <div class="rec-panel-img fade-in" style="transition-delay:.1s">
+        <img src="img/native-campanhas-min.jpg" alt="Discador Automático Infinity ISP">
+      </div>
+    </div>
+
+    <!-- Cobrança -->
+    <div class="rec-panel" id="panel-cobranca">
+      <div class="rec-panel-text fade-in">
+        <h3>Solução Completa para o Time de Cobrança</h3>
+        <p>O Módulo de Cobrança da Native IP automatiza totalmente o processo, eliminando tarefas manuais como subir listas de inadimplentes ou realizar discagens manuais. Isso reduz custos operacionais e aumenta a produtividade do time.</p>
+        <ul class="rec-list">
+          <li><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#0066FF" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span>Busca automática de inadimplentes no ERP</span></li>
+          <li><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#0066FF" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span>Redução da inadimplência com estratégias automatizadas</span></li>
+          <li><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#0066FF" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span>Campanhas de cobrança com discagem automática</span></li>
+          <li><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#0066FF" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span>Recuperação de crédito ágil e eficiente</span></li>
+        </ul>
+        <a href="index.html#contato" class="btn btn-primary">Quero conhecer</a>
+      </div>
+      <div class="rec-panel-img fade-in" style="transition-delay:.1s">
+        <img src="img/cobranca-min.jpg" alt="Módulo de Cobrança Infinity ISP">
+      </div>
+    </div>
+
+    <!-- Relatórios -->
+    <div class="rec-panel" id="panel-relatorios">
+      <div class="rec-panel-text fade-in">
+        <h3>Dashboard TV e relatórios estratégicos</h3>
+        <p>O Dashboard TV permite que os agentes visualizem a performance individual e da equipe diretamente em monitores na operação, facilitando a identificação de oportunidades de melhoria e tomada de decisões em tempo real.</p>
+        <ul class="rec-list">
+          <li><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#0066FF" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span>Dashboard TV para visualização em tempo real</span></li>
+          <li><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#0066FF" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span>Relatórios gerenciais completos</span></li>
+          <li><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#0066FF" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span>Gráficos de desempenho por agente e equipe</span></li>
+        </ul>
+        <a href="index.html#contato" class="btn btn-primary">Quero conhecer</a>
+      </div>
+      <div class="rec-panel-img fade-in" style="transition-delay:.1s">
+        <img src="img/dash-tv-min.jpg" alt="Dashboard TV Infinity ISP">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── IA Análise de Sentimentos ─────────────────────────── -->
+<section class="ia-section">
+  <div class="container">
+    <div class="ia-grid">
+      <div class="ia-text fade-in">
+        <span class="label">Inteligência Artificial</span>
+        <h2>Análise de Sentimentos</h2>
+        <p>Com a Análise de Sentimentos do Infinity, você entende como seu cliente se sentiu durante a ligação e transforma essa informação em decisões estratégicas. É tecnologia de verdade para quem quer crescer com inteligência.</p>
+        <div class="sentiment-pills">
+          <span class="pill-pos">😊 Positivo</span>
+          <span class="pill-neu">😐 Neutro</span>
+          <span class="pill-neg">😞 Negativo</span>
+        </div>
+        <div style="margin-top:32px">
+          <a href="index.html#contato" class="btn btn-primary">Quero essa tecnologia</a>
+        </div>
+      </div>
+      <div class="ia-cards fade-in" style="transition-delay:.15s">
+        <div class="ia-card">
+          <div class="ia-card-icon"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#60A5FA" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/></svg></div>
+          <div>
+            <h4>Transcreve os áudios das chamadas</h4>
+            <p>Permite analisar cada conversa com precisão, garantindo total transparência no atendimento.</p>
+          </div>
+        </div>
+        <div class="ia-card">
+          <div class="ia-card-icon"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#60A5FA" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div>
+          <div>
+            <h4>Gera resumos automáticos</h4>
+            <p>Facilita o acompanhamento e tomada de decisões com base em informações condensadas e relevantes.</p>
+          </div>
+        </div>
+        <div class="ia-card">
+          <div class="ia-card-icon"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#60A5FA" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg></div>
+          <div>
+            <h4>Classifica o sentimento em tempo real</h4>
+            <p>Identifica a percepção do cliente, ajudando a antecipar ajustes no atendimento antes que seja tarde.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ───────────────────────────────────────────────── -->
+<section class="section" id="contato">
+  <div class="container">
+    <div class="cta-grid">
+      <div class="cta-left fade-in">
+        <span class="label">Fale com a gente</span>
+        <h2 class="section-title" style="text-align:left;max-width:420px">Surpreenda-se com as plataformas de atendimento Native</h2>
+        <p style="color:var(--muted);margin-bottom:32px">Agende uma demonstração e conheça o potencial de transformação que o Infinity ISP pode proporcionar ao seu provedor.</p>
+        <ul class="cta-benefits">
+          <li><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#0066FF" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Plataforma 100% especializada para ISPs</li>
+          <li><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#0066FF" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Integração nativa com Voalle, IXC, MK e mais</li>
+          <li><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#0066FF" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>IA, Discador e Módulo de Cobrança inclusos</li>
+          <li><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#0066FF" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Suporte personalizado e Customer Success</li>
+        </ul>
+        <div class="cta-contact">
+          <a href="tel:08008003013" class="cta-contact-item"><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>0800 800 3013</a>
+          <a href="mailto:comercial@nativeip.com.br" class="cta-contact-item"><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>comercial@nativeip.com.br</a>
+        </div>
+      </div>
+      <div class="cta-right fade-in" style="transition-delay:.15s">
+        <div class="form-card">
+          <h3 style="margin-bottom:24px;font-size:20px;color:var(--blue-dark)">Agende sua demonstração</h3>
+          <form id="contactForm" novalidate>
+            <div class="form-row">
+              <div class="form-group"><label for="nome">Nome *</label><input type="text" id="nome" name="nome" placeholder="Seu nome completo" required></div>
+              <div class="form-group"><label for="email">E-mail *</label><input type="email" id="email" name="email" placeholder="seu@email.com" required></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label for="whatsapp">WhatsApp *</label><input type="tel" id="whatsapp" name="whatsapp" placeholder="(00) 00000-0000" required></div>
+              <div class="form-group"><label for="cnpj">CNPJ</label><input type="text" id="cnpj" name="cnpj" placeholder="00.000.000/0001-00"></div>
+            </div>
+            <div class="form-group"><label for="empresa">Nome da Empresa *</label><input type="text" id="empresa" name="empresa" placeholder="Sua empresa" required></div>
+            <div class="form-group">
+              <label for="necessidade">Necessidade</label>
+              <select id="necessidade" name="necessidade">
+                <option value="">Selecione sua necessidade</option>
+                <option>Preciso receber mais ligações</option>
+                <option>Preciso fazer mais ligações</option>
+                <option>Quero reduzir meus custos</option>
+                <option>Todas as opções</option>
+              </select>
+            </div>
+            <div class="form-check">
+              <input type="checkbox" id="lgpd" name="lgpd" required>
+              <label for="lgpd">Li e aceito os <a href="https://nativeip.com.br/termo-uso-website/" target="_blank" rel="noopener">Termos de Uso</a> e a <a href="https://nativeip.com.br/privacy/" target="_blank" rel="noopener">Política de Privacidade</a>. *</label>
+            </div>
+            <div class="form-error" id="formError" role="alert" aria-live="polite"></div>
+            <div class="form-success" id="formSuccess" role="status" aria-live="polite"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Mensagem enviada! Entraremos em contato em breve.</div>
+            <button type="submit" class="btn btn-primary" id="submitBtn" style="width:100%;justify-content:center;padding:15px">Enviar Mensagem</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ── Footer ────────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="img/logotipo-native.png" alt="NativeIP" style="height:44px;margin-bottom:16px;filter:brightness(0) invert(1)">
+        <p>Comunicação inteligente que impulsiona negócios. Especialistas em provedores de internet há mais de 8 anos.</p>
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/company/nativeip" target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+          <a href="https://www.instagram.com/nativeip" target="_blank" rel="noopener" aria-label="Instagram"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+          <a href="https://www.facebook.com/nativeip" target="_blank" rel="noopener" aria-label="Facebook"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Soluções</h4>
+        <ul>
+          <li><a href="infinity-isp.html">Infinity ISP</a></li>
+          <li><a href="https://nativeip.com.br/pabx-virtual/" target="_blank" rel="noopener">PABX Virtual</a></li>
+          <li><a href="https://nativeip.com.br/call-center/" target="_blank" rel="noopener">Call Center</a></li>
+          <li><a href="https://nativeip.com.br/discador-automatico/" target="_blank" rel="noopener">Discador Automático</a></li>
+          <li><a href="https://nativeip.com.br/modulo-de-cobranca/" target="_blank" rel="noopener">Módulo de Cobrança</a></li>
+          <li><a href="https://nativeip.com.br/integracoes/" target="_blank" rel="noopener">Integrações</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="sobre.html">Sobre a Native</a></li>
+          <li><a href="https://nativeip.com.br/blog/" target="_blank" rel="noopener">Blog</a></li>
+          <li><a href="https://nativeip.com.br/cases-de-sucesso/" target="_blank" rel="noopener">Cases de Sucesso</a></li>
+          <li><a href="parceiro.html">Seja Parceiro</a></li>
+          <li><a href="https://helpdesk.nativeip.com.br/v/" target="_blank" rel="noopener">Suporte</a></li>
+          <li><a href="https://nativeip.com.br/teste-gratis/" target="_blank" rel="noopener">Teste Grátis</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>©NativeIP 2025 | Todos os Direitos Reservados</span>
+      <div class="footer-bottom-links">
+        <a href="https://nativeip.com.br/privacy/" target="_blank" rel="noopener">Política de Privacidade</a>
+        <a href="https://nativeip.com.br/politica-de-cookies/" target="_blank" rel="noopener">Cookies</a>
+        <a href="https://nativeip.com.br/termo-uso-website/" target="_blank" rel="noopener">Termos de Uso</a>
+        <a href="https://www.actatechlaw.com.br/canalnative" target="_blank" rel="noopener">Canal de Ética</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/5508008003013" target="_blank" rel="noopener" class="whatsapp-btn" aria-label="Fale pelo WhatsApp">
+  <svg width="28" height="28" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script src="js/main.js"></script>
+<script>
+  // Tabs específicas desta página (rec-tabs)
+  document.querySelectorAll('.rec-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.rec-tab').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+      document.querySelectorAll('.rec-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active'); btn.setAttribute('aria-selected','true');
+      const panel = document.getElementById('panel-' + btn.dataset.panel);
+      if (panel) panel.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
