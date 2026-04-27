@@ -73,9 +73,9 @@
       background: var(--white); border-radius: var(--radius); padding: 36px 28px;
       box-shadow: var(--shadow); border: 1px solid var(--border); text-align: center;
       position: relative; z-index: 1;
-      transition: transform .25s, box-shadow .25s;
+      transition: transform .3s cubic-bezier(.34,.67,.68,1), box-shadow .3s ease;
     }
-    .step-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+    .step-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); }
     .step-num {
       width: 56px; height: 56px; border-radius: 50%;
       background: var(--blue); color: #fff; font-size: 20px; font-weight: 800;
@@ -95,9 +95,9 @@
       background: var(--white); border-radius: var(--radius); padding: 28px 24px;
       border: 1px solid var(--border); box-shadow: var(--shadow);
       display: flex; align-items: flex-start; gap: 16px;
-      transition: transform .25s, box-shadow .25s;
+      transition: transform .3s cubic-bezier(.34,.67,.68,1), box-shadow .3s ease, border-color .3s ease;
     }
-    .beneficio-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+    .beneficio-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); border-color: #BFDBFE; }
     .ben-icon {
       width: 48px; height: 48px; border-radius: 12px; background: var(--blue-light);
       display: flex; align-items: center; justify-content: center; flex-shrink: 0;
@@ -145,6 +145,21 @@
     .parceiro-contact a { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 600; color: rgba(255,255,255,.85); transition: color .2s; }
     .parceiro-contact a:hover { color: #fff; }
     @media (max-width: 1024px) { .parceiro-form-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+    /* ── Form Card Improvements ────────────────────────────── */
+    .form-card { transition: box-shadow .3s ease; }
+    .form-card:hover { box-shadow: 0 8px 24px rgba(0,102,255,.1); }
+    .form-group label { font-weight: 700; letter-spacing: .3px; }
+    .form-group input, .form-group select { 
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .form-group input:focus, .form-group select:focus {
+      border-color: var(--blue); 
+      box-shadow: 0 0 0 4px rgba(0,102,255,.12);
+    }
+    .btn:not(.btn-outline-white) {
+      transition: all .3s cubic-bezier(.34,.67,.68,1);
+    }
   </style>
 </head>
 <body>
@@ -172,21 +187,16 @@
       </a>
       <ul class="nav-links" id="navLinks" role="list">
         <li><a href="sobre.html">Sobre</a></li>
-        <li><a href="infinity-isp.html">Infinity</a></li>
         <li><a href="index.html#solucoes">Soluções</a></li>
         <li><a href="index.html#integracoes">Integrações</a></li>
-        <li><a href="index.html#blog">Blog</a></li>
         <li><a href="parceiro.html" style="color:var(--blue)">Seja Parceiro</a></li>
-        <li><a href="https://helpdesk.nativeip.com.br/v/" target="_blank" rel="noopener">Suporte</a></li>
         <li><a href="#formulario">Contato</a></li>
         <li class="nav-cta">
-          <a href="#formulario" class="btn btn-secondary">Indique Agora</a>
-          <a href="index.html#contato" class="btn btn-primary">Teste Grátis</a>
+          <a href="#formulario" class="btn btn-primary">Indique Agora</a>
         </li>
       </ul>
       <div class="nav-cta" id="navCta">
-        <a href="#formulario" class="btn btn-secondary">Indique Agora</a>
-        <a href="index.html#contato" class="btn btn-primary">Teste Grátis</a>
+        <a href="#formulario" class="btn btn-primary">Indique Agora</a>
       </div>
       <button class="nav-hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -206,13 +216,6 @@
     <span class="label">Programa de Parcerias</span>
     <h1>Indique a Native e <span>transforme negócios</span></h1>
     <p>Torne-se um parceiro oficial da Native e ajude empresas a encontrar soluções inteligentes. Juntos, podemos transformar desafios em oportunidades!</p>
-    <div class="parceiro-hero-btns">
-      <a href="#formulario" class="btn btn-primary">
-        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-        Quero ser parceiro
-      </a>
-      <a href="sobre.html" class="btn btn-outline-white">Conheça a Native</a>
-    </div>
   </div>
 </section>
 
@@ -369,7 +372,6 @@
       <div class="footer-col">
         <h4>Soluções</h4>
         <ul>
-          <li><a href="infinity-isp.html">Infinity ISP</a></li>
           <li><a href="https://nativeip.com.br/pabx-virtual/" target="_blank" rel="noopener">PABX Virtual</a></li>
           <li><a href="https://nativeip.com.br/call-center/" target="_blank" rel="noopener">Call Center</a></li>
           <li><a href="https://nativeip.com.br/discador-automatico/" target="_blank" rel="noopener">Discador Automático</a></li>
@@ -380,7 +382,6 @@
         <h4>Empresa</h4>
         <ul>
           <li><a href="sobre.html">Sobre a Native</a></li>
-          <li><a href="https://nativeip.com.br/blog/" target="_blank" rel="noopener">Blog</a></li>
           <li><a href="parceiro.html">Seja Parceiro</a></li>
           <li><a href="https://helpdesk.nativeip.com.br/v/" target="_blank" rel="noopener">Suporte</a></li>
           <li><a href="https://nativeip.com.br/teste-gratis/" target="_blank" rel="noopener">Teste Grátis</a></li>
