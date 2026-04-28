@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cases de Sucesso | Native IP</title>
+  <meta name="description" content="Confira como as soluções da Native mudaram a realidade de diversas empresas em todo o Brasil. Cases reais de sucesso.">
+  <link rel="icon" href="img/cropped-Favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .cases-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .cases-hero {
+      background: linear-gradient(135deg, #0a2540 0%, #1a3a52 50%, #0a2540 100%);
+      color: var(--white);
+      padding: 120px 0 100px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cases-hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(0, 102, 255, 0.2) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .cases-hero::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: -5%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(0, 102, 255, 0.12) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      animation: float-reverse 8s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(20px); }
+    }
+
+    @keyframes float-reverse {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .cases-hero-inner {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .cases-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: rgba(0, 102, 255, 0.15);
+      border: 1px solid rgba(0, 102, 255, 0.3);
+      border-radius: 24px;
+      font-size: 14px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.9);
+      animation: slideDown 0.8s ease-out;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .cases-hero h1 {
+      font-size: clamp(40px, 6vw, 60px);
+      font-weight: 800;
+      line-height: 1.1;
+      margin: 16px 0;
+      color: var(--white);
+      animation: slideDown 0.8s ease-out 0.1s both;
+      max-width: 900px;
+    }
+
+    .cases-hero h1 span {
+      background: linear-gradient(135deg, #0066ff 0%, #00d4ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .cases-hero p {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.8;
+      max-width: 700px;
+      margin: 0 auto;
+      animation: slideDown 0.8s ease-out 0.2s both;
+    }
+
+    .cases-hero-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 40px;
+      margin-top: 60px;
+      padding-top: 60px;
+      border-top: 1px solid rgba(0, 102, 255, 0.2);
+      animation: slideDown 0.8s ease-out 0.3s both;
+    }
+
+    .cases-stat {
+      text-align: center;
+    }
+
+    .cases-stat-number {
+      font-size: 32px;
+      font-weight: 800;
+      color: #00d4ff;
+      margin-bottom: 8px;
+    }
+
+    .cases-stat-label {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.7);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .cases-section {
+      padding: 80px 0;
+    }
+
+    .cases-section-dark {
+      background: #f8f9fa;
+    }
+
+    .cases-title {
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--blue-dark);
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .cases-subtitle {
+      font-size: 18px;
+      color: var(--muted);
+      text-align: center;
+      margin-bottom: 60px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 40px;
+      margin-top: 60px;
+    }
+
+    .case-card {
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s cubic-bezier(0.34, 0.67, 0.68, 1);
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .case-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 32px rgba(0, 102, 255, 0.15);
+    }
+
+    .case-image {
+      width: 100%;
+      height: 240px;
+      overflow: hidden;
+      background: #f0f4f8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .case-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .case-card:hover .case-image img {
+      transform: scale(1.05);
+    }
+
+    .case-content {
+      padding: 32px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .case-company {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+
+    .case-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--blue-dark);
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+
+    .case-description {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.8;
+      flex: 1;
+      margin-bottom: 16px;
+    }
+
+    .case-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--blue);
+      font-weight: 600;
+      font-size: 14px;
+      transition: gap 0.3s ease;
+    }
+
+    .case-link:hover {
+      gap: 12px;
+    }
+
+    .case-link svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* FAQ Section */
+    .faq-section {
+      padding: 80px 0;
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 40px;
+    }
+
+    .faq-item {
+      background: #f8f9fa;
+      padding: 24px;
+      border-radius: 8px;
+      border-left: 4px solid var(--blue);
+      transition: all 0.3s ease;
+    }
+
+    .faq-item:hover {
+      box-shadow: 0 4px 12px rgba(0, 102, 255, 0.1);
+      transform: translateX(4px);
+    }
+
+    .faq-question {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--blue-dark);
+      margin-bottom: 12px;
+    }
+
+    .faq-answer {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .cta-section {
+      background: linear-gradient(135deg, #0a2540 0%, #1a3a52 100%);
+      color: var(--white);
+      padding: 80px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(0, 102, 255, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .cta-section-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-section h2 {
+      font-size: 40px;
+      font-weight: 800;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .cta-section p {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 40px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.8;
+    }
+
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 40px;
+      background: var(--white);
+      color: var(--blue);
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 16px;
+      transition: all 0.3s cubic-bezier(0.34, 0.67, 0.68, 1);
+      border: none;
+      cursor: pointer;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+    }
+
+    .fade-in {
+      opacity: 0;
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+
+      .cases-hero h1 {
+        font-size: 36px;
+      }
+
+      .cases-hero-stats {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .cases-section {
+        padding: 60px 0;
+      }
+
+      .cases-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .faq-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .cases-title {
+        font-size: 28px;
+      }
+
+      .cta-section h2 {
+        font-size: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<main>
+
+<!-- Hero Section -->
+<section class="cases-hero">
+  <div class="cases-container">
+    <div class="cases-hero-inner">
+      <span class="cases-hero-badge">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+        </svg>
+        Casos de sucesso reais
+      </span>
+      
+      <h1>
+        Cases de <span>Sucesso</span>
+      </h1>
+      
+      <p>Confira como as soluções da Native transformaram a realidade de diversas empresas em todo o Brasil. Histórias reais de crescimento, eficiência e sucesso operacional.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Cases Grid -->
+<section class="cases-section">
+  <div class="cases-container">
+    <div class="cases-grid">
+      <!-- Case 1 -->
+      <a href="case-angeza.html" class="case-card fade-in">
+        <div class="case-image">
+          <img src="img/case-de-sucess-angeza.png" alt="Angeza">
+        </div>
+        <div class="case-content">
+          <span class="case-company">Angeza</span>
+          <h3 class="case-title">Eficiência Operacional</h3>
+          <p class="case-description">Entenda como a Angeza migrou para o Native Infinity, unificando a comunicação e ganhando mais eficiência e segurança.</p>
+          <span class="case-link">
+            Ver Case Completo
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- Case 2 -->
+      <a href="case-br-super.html" class="case-card fade-in">
+        <div class="case-image">
+          <img src="img/br-super.png" alt="BR Super">
+        </div>
+        <div class="case-content">
+          <span class="case-company">BR Super</span>
+          <h3 class="case-title">Agilidade e Eficiência</h3>
+          <p class="case-description">Saiba como a BR Super ganhou muita agilidade e eficiência com a plataforma unificada da Native.</p>
+          <span class="case-link">
+            Ver Case Completo
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- Case 3 -->
+      <a href="case-tuxnet.html" class="case-card fade-in">
+        <div class="case-image">
+          <img src="img/tuxnet.png" alt="TuxNet">
+        </div>
+        <div class="case-content">
+          <span class="case-company">TuxNet</span>
+          <h3 class="case-title">Recuperação de Inadimplentes</h3>
+          <p class="case-description">Veja como a Tuxnet recuperou inadimplentes e ganhou eficiência com nosso Módulo de Cobrança.</p>
+          <span class="case-link">
+            Ver Case Completo
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- Case 4 -->
+      <a href="case-mell-internet.html" class="case-card fade-in">
+        <div class="case-image">
+          <img src="img/mell.png" alt="Mell Internet">
+        </div>
+        <div class="case-content">
+          <span class="case-company">Mell Internet</span>
+          <h3 class="case-title">Otimização e Gestão</h3>
+          <p class="case-description">Saiba como a Mell otimizou monitoramento e gestão de equipes, aumentando disciplina e eficiência com a Native.</p>
+          <span class="case-link">
+            Ver Case Completo
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="cases-section cases-section-dark">
+  <div class="cases-container">
+    <h2 class="cases-title">Perguntas Frequentes</h2>
+    <p class="cases-subtitle">Confira algumas perguntas comumente feitas pelos clientes Native e entenda um pouco mais sobre nossa atuação.</p>
+    
+    <div class="faq-grid">
+      <div class="faq-item fade-in">
+        <h3 class="faq-question">❓ A Native é operadora de telecomunicações?</h3>
+        <p class="faq-answer">Não somos operadora, portanto não trabalhamos com estas informações, porém trabalhamos com parceiros que fornecem estes serviços aos clientes Native.</p>
+      </div>
+
+      <div class="faq-item fade-in">
+        <h3 class="faq-question">💰 Há custos adicionais para crescer?</h3>
+        <p class="faq-answer">Não, o sistema Native trabalha com liberdade de crescimento sem custos adicionais, a única preocupação do cliente é com a configuração do hardware onde está o sistema, mas isso nossa equipe técnica realiza um diagnóstico.</p>
+      </div>
+
+      <div class="faq-item fade-in">
+        <h3 class="faq-question">📞 O sistema é específico para IP?</h3>
+        <p class="faq-answer">Não, é uma plataforma de telefonia IP, que pode utilizar todas as tecnologias de comunicação, IP e/ou analógico.</p>
+      </div>
+
+      <div class="faq-item fade-in">
+        <h3 class="faq-question">📱 É compatível com aparelhos analógicos?</h3>
+        <p class="faq-answer">Não, todas as tecnologias são permitidas, inclusive os ramais e aparelhos analógicos atuais, além destes, softphone no note ou PC, aparelhos IPs de diversas marcas.</p>
+      </div>
+
+      <div class="faq-item fade-in">
+        <h3 class="faq-question">☁️ Qual é o modelo de implantação?</h3>
+        <p class="faq-answer">O sistema Native pode ser on Premise, virtualizado na estrutura do cliente ou através de appliance ou In Cloud, dependerá da necessidade do cliente e da estrutura de TI.</p>
+      </div>
+
+      <div class="faq-item fade-in">
+        <h3 class="faq-question">🤝 Como entro em contato para esclarecimentos?</h3>
+        <p class="faq-answer">Nossa equipe de atendimento e relacionamento com o cliente está preparada para responder todas as suas dúvidas! Entre em contato conosco e responderemos o mais breve possível.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+  <div class="cases-container">
+    <div class="cta-section-inner fade-in">
+      <h2>Agende uma Demonstração</h2>
+      <p>Confira na prática o potencial de transformação que as ferramentas de comunicação inteligente Native poderão proporcionar a sua distribuidora.</p>
+      <a href="index.html#contactForm" class="cta-button">
+        Entrar em Contato
+        <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script src="js/components-loader.js"></script>
+<script src="js/main.js"></script>
+<script>
+  // Fade-in animation on scroll
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -100px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.fade-in').forEach(el => {
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
