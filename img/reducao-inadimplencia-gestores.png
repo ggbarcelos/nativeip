@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <title>Content Delivery from Beefree</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f6f8;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            max-width: 600px;
+            text-align: center;
+            border-top: 5px solid #bdc3c7; /* Colore neutro (grigio) */
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #555;
+        }
+        hr {
+            border: 0;
+            height: 1px;
+            background: #eee;
+            margin: 30px 0;
+        }
+        .abuse-section {
+            font-size: 12px;
+            color: #7f8c8d;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>SDKMedia Content Delivery Network</h1>
+    <p>This infrastructure provides high-availability asset hosting for the <strong>BeeFree</strong> ecosystem.</p>
+    
+    <p>Services hosted here include static images, stylesheets, and fonts used in email design and digital communication.</p>
+
+    <hr>
+
+    <div class="abuse-section">
+        <p>Managed by Bee content design inc. Registered Office:  San Francisco, CA.</p>
+        <p>For technical documentation, inquiries or to report abuse use <a href="https://policy.sdkmedia.net/abuse">this link</a></p>
+        <p><a href="https://policy.sdkmedia.net/gdpr-compliance">Privacy Policy</a> | <a href="https://policy.sdkmedia.net/terms-of-service">Terms of Service</a></p>
+    </div>
+</div>
+</body>
+</html>

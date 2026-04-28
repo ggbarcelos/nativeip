@@ -1,0 +1,442 @@
+/* ── Conteúdos Page Styles ──────────────────────────────────── */
+
+/* Hero - Conteúdos */
+.hero-conteudos {
+  background: linear-gradient(135deg, #0a2540 0%, #1a3a52 100%);
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+  padding: 120px 0 80px;
+}
+
+.hero-conteudos::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(0, 102, 255, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero-conteudos .hero-content h1 {
+  color: var(--white);
+  font-size: clamp(32px, 5vw, 52px);
+  line-height: 1.15;
+  margin-bottom: 24px;
+}
+
+.hero-conteudos .hero-sub {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 18px;
+  max-width: 600px;
+}
+
+.hero-conteudos .hero-badge {
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* E-books Grid */
+.ebooks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 28px;
+  margin-top: 48px;
+}
+
+.ebook-showcase {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.34, 0.67, 0.68, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  height: 100%;
+}
+
+.ebook-showcase:hover {
+  border-color: var(--blue);
+  box-shadow: 0 16px 32px rgba(0, 102, 255, 0.15);
+  transform: translateY(-8px);
+}
+
+.ebook-showcase-image {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.ebook-showcase-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s cubic-bezier(0.34, 0.67, 0.68, 1);
+}
+
+.ebook-showcase:hover .ebook-showcase-image img {
+  transform: scale(1.04);
+}
+
+.ebook-showcase-content {
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.ebook-showcase-content h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--blue-dark);
+  margin: 0 0 16px 0;
+  line-height: 1.3;
+}
+
+.ebook-showcase-content p {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.65;
+  margin: 0 0 24px 0;
+  flex-grow: 1;
+}
+
+.ebook-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--blue);
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  width: fit-content;
+}
+
+.ebook-showcase:hover .ebook-cta {
+  color: var(--blue-dark);
+  gap: 12px;
+}
+
+/* Benefits - Dark Background */
+.cont-benefits {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+}
+
+.benefit-item {
+  padding: 32px 28px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius);
+  transition: all 0.3s ease;
+}
+
+.benefit-item:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-4px);
+}
+
+.benefit-icon {
+  width: 56px;
+  height: 56px;
+  background: rgba(74, 222, 128, 0.15);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.benefit-item:hover .benefit-icon {
+  background: rgba(74, 222, 128, 0.3);
+  transform: scale(1.1);
+}
+
+.benefit-item h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+.benefit-item p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Topics Grid */
+.cont-topics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.topic-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px 28px;
+  position: relative;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.topic-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--blue) 0%, var(--blue-light) 100%);
+}
+
+.topic-card:hover {
+  border-color: var(--blue);
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-4px);
+}
+
+.topic-number {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--blue);
+  background: var(--blue-light);
+  padding: 4px 12px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+}
+
+.topic-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--blue-dark);
+  margin-bottom: 12px;
+}
+
+.topic-card p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* FAQ Section */
+.cont-faq {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--border);
+  padding: 24px 0;
+}
+
+.faq-item:last-child {
+  border-bottom: none;
+}
+
+.faq-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--blue-dark);
+  text-align: left;
+  transition: color 0.2s ease;
+}
+
+.faq-question:hover {
+  color: var(--blue);
+}
+
+.faq-question svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--blue);
+  transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-question svg {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  display: none;
+  padding-top: 16px;
+  color: var(--muted);
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+.faq-item.active .faq-answer {
+  display: block;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Blog Section */
+.cont-blog {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius);
+  padding: 40px 32px;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.cont-blog p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* CTA Section */
+.cont-cta-section {
+  padding: 80px 0;
+}
+
+.cont-cta {
+  background: linear-gradient(135deg, var(--blue-dark) 0%, #1a3a52 100%);
+  color: var(--white);
+  padding: 60px 40px;
+  border-radius: var(--radius);
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.cont-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -100px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(0, 102, 255, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.cont-cta h2 {
+  font-size: clamp(28px, 4vw, 36px);
+  font-weight: 800;
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.cont-cta p {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 32px;
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+
+.cont-cta .btn-large {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.cont-cta-note {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+  position: relative;
+  z-index: 1;
+  margin-top: 24px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-conteudos {
+    padding: 80px 0 60px;
+  }
+
+  .hero-conteudos .hero-content h1 {
+    font-size: 28px;
+  }
+
+  .ebooks-grid,
+  .cont-benefits,
+  .cont-topics {
+    grid-template-columns: 1fr;
+  }
+
+  .cont-cta {
+    padding: 40px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-conteudos {
+    padding: 60px 0 40px;
+  }
+
+  .hero-conteudos .hero-content h1 {
+    font-size: 24px;
+  }
+
+  .hero-conteudos .hero-sub {
+    font-size: 15px;
+  }
+
+  .cont-cta h2 {
+    font-size: 24px;
+  }
+
+  .benefit-item,
+  .topic-card,
+  .ebook-card {
+    padding: 24px 16px;
+  }
+
+  .cont-cta {
+    padding: 32px 16px;
+  }
+
+  .topic-number {
+    font-size: 12px;
+    padding: 3px 10px;
+  }
+}

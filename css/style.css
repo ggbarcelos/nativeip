@@ -82,7 +82,7 @@
     .nav-logo span { font-size: 18px; font-weight: 800; color: var(--blue-dark); display: none; }
     .nav-logo img.broken + span { display: block; }
 
-    .nav-links { display: flex; align-items: center; gap: 4px; flex: 1; justify-content: center; }
+    .nav-links { display: flex; align-items: center; gap: 4px; flex: 1; justify-content: flex-end; }
     .nav-links > li > a {
       font-size: 13px; font-weight: 600; color: #475569;
       padding: 6px 10px; border-radius: 6px;
@@ -565,7 +565,20 @@
     .footer-bottom-links { display: flex; gap: 20px; }
     .footer-bottom-links a { color: rgba(255,255,255,.4); transition: color .2s; }
     .footer-bottom-links a:hover { color: rgba(255,255,255,.8); }
-    @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; gap: 32px; } .footer-bottom { flex-direction: column; text-align: center; } }
+    
+    /* Footer Developed Section */
+    .footer-developed-section { background: #f8f9fa; border-top: 1px solid #e5e7eb; padding: 16px 0; }
+    .developed-content { display: flex; align-items: center; justify-content: flex-end; gap: 16px; }
+    .developed-content span { font-size: 14px; font-weight: 500; color: #666666; letter-spacing: 0.3px; }
+    .developed-link { display: flex; align-items: center; opacity: 0.85; transition: opacity 0.3s ease; }
+    .developed-link:hover { opacity: 1; }
+    .developed-logo { height: 40px; width: auto; }
+    
+    @media (max-width: 768px) { 
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; } 
+      .footer-bottom { flex-direction: column; text-align: center; } 
+      .developed-content { justify-content: center; padding: 0 20px; }
+    }
 
     /* ── WhatsApp btn ──────────────────────────────────────── */
     .whatsapp-btn {

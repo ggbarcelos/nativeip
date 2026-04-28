@@ -1,31 +1,3 @@
-  // ── Navbar Scroll Shadow ────────────────────────────────────
-  const navbar = document.querySelector('.navbar');
-  let lastScroll = 0;
-  
-  window.addEventListener('scroll', () => {
-    const scrollTop = window.scrollY;
-    if (scrollTop > 10) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
-    }
-    lastScroll = scrollTop;
-  }, false);
-
-  // ── Hamburger ──────────────────────────────────────────────
-  const hamburger = document.getElementById('hamburger');
-  const navLinks  = document.getElementById('navLinks');
-
-  hamburger.addEventListener('click', () => {
-    const open = navLinks.classList.toggle('open');
-    hamburger.setAttribute('aria-expanded', open);
-  });
-
-  // Close menu on link click
-  navLinks.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => navLinks.classList.remove('open'));
-  });
-
   // ── Tabs ───────────────────────────────────────────────────
   document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.addEventListener('click', () => {

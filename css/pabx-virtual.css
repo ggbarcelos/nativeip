@@ -1,0 +1,569 @@
+/* ── PABX Virtual Page Styles ───────────────────────────────────── */
+
+/* Hero - PABX */
+.hero-pabx {
+  background: linear-gradient(135deg, var(--blue-dark) 0%, #1a3a52 100%);
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+  padding: 120px 0 80px;
+}
+
+.hero-pabx::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(0, 102, 255, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero-pabx .hero-content h1 {
+  color: var(--white);
+  font-size: clamp(32px, 5vw, 52px);
+  line-height: 1.15;
+  margin-bottom: 24px;
+}
+
+.hero-pabx .hero-sub {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 18px;
+  max-width: 600px;
+}
+
+.hero-pabx .hero-badge {
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.hero-benefits {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.benefit-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.benefit-item strong {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.benefit-item span {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--white);
+}
+
+/* PABX Grid Cards - 2 Columns */
+.pabx-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.pabx-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 40px 32px;
+  text-align: center;
+  transition: all 0.3s cubic-bezier(0.34, 0.67, 0.68, 1);
+  box-shadow: var(--shadow);
+}
+
+.pabx-card:hover {
+  border-color: var(--blue);
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-8px);
+}
+
+.card-icon {
+  width: 60px;
+  height: 60px;
+  background: var(--blue-light);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  transition: all 0.3s ease;
+}
+
+.pabx-card:hover .card-icon {
+  background: var(--blue);
+}
+
+.pabx-card:hover .card-icon svg {
+  stroke: var(--white);
+}
+
+.pabx-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--blue-dark);
+}
+
+.pabx-card p {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* Advantages Section */
+.pabx-advantages {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+}
+
+.advantage-item {
+  position: relative;
+  padding-left: 80px;
+}
+
+.advantage-number {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 48px;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.1);
+  line-height: 1;
+}
+
+.advantage-item h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+.advantage-item p {
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 20px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.advantage-list {
+  list-style: none;
+}
+
+.advantage-list li {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 14px;
+  padding: 6px 0;
+  padding-left: 24px;
+  position: relative;
+}
+
+.advantage-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #4ade80;
+  font-weight: 700;
+}
+
+/* Use Cases */
+.pabx-usecases {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 32px;
+}
+
+.usecase {
+  text-align: center;
+  padding: 32px 24px;
+  border-radius: var(--radius);
+  background: var(--white);
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+}
+
+.usecase:hover {
+  border-color: var(--blue);
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-4px);
+}
+
+.usecase-icon {
+  width: 70px;
+  height: 70px;
+  background: var(--blue-light);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  transition: all 0.3s ease;
+}
+
+.usecase:hover .usecase-icon {
+  background: var(--blue);
+}
+
+.usecase:hover .usecase-icon svg {
+  stroke: var(--white);
+}
+
+.usecase h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--blue-dark);
+  margin-bottom: 12px;
+}
+
+.usecase p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Features Grid */
+.pabx-features {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.feature-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
+}
+
+.feature-item {
+  padding: 32px 28px;
+  background: linear-gradient(135deg, rgba(0, 102, 255, 0.04) 0%, transparent 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.feature-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 0;
+  background: var(--blue);
+  border-radius: 4px;
+  transition: height 0.3s ease;
+}
+
+.feature-item:hover {
+  border-color: var(--blue);
+  box-shadow: var(--shadow-hover);
+  transform: translateX(4px);
+}
+
+.feature-item:hover::before {
+  height: 100%;
+}
+
+.feature-badge {
+  display: inline-block;
+  background: var(--blue);
+  color: var(--white);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 4px 10px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+.feature-item h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--blue-dark);
+  margin-bottom: 12px;
+}
+
+.feature-item p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* FAQ Section */
+.pabx-faq {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--border);
+  padding: 24px 0;
+}
+
+.faq-item:last-child {
+  border-bottom: none;
+}
+
+.faq-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--blue-dark);
+  text-align: left;
+  transition: color 0.2s ease;
+}
+
+.faq-question:hover {
+  color: var(--blue);
+}
+
+.faq-question svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--blue);
+  transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-question svg {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  display: none;
+  padding-top: 16px;
+  color: var(--muted);
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+.faq-item.active .faq-answer {
+  display: block;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* CTA Section */
+.pabx-cta-section {
+  padding: 80px 0;
+}
+
+.pabx-cta {
+  background: linear-gradient(135deg, var(--blue-dark) 0%, #1a3a52 100%);
+  color: var(--white);
+  padding: 60px 40px;
+  border-radius: var(--radius);
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.pabx-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -100px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(0, 102, 255, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.pabx-cta h2 {
+  font-size: clamp(28px, 4vw, 36px);
+  font-weight: 800;
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.pabx-cta p {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 32px;
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+
+.pabx-cta-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.pabx-cta-form input {
+  padding: 13px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--text);
+}
+
+.pabx-cta-form input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.2);
+}
+
+.pabx-cta-form button {
+  align-self: center;
+  min-width: 200px;
+}
+
+.pabx-cta-note {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+  position: relative;
+  z-index: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-pabx {
+    padding: 80px 0 60px;
+  }
+
+  .hero-benefits {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 32px;
+    padding-top: 24px;
+  }
+
+  .benefit-item strong {
+    font-size: 11px;
+  }
+
+  .benefit-item span {
+    font-size: 13px;
+  }
+
+  .pabx-grid-2,
+  .pabx-advantages,
+  .pabx-usecases {
+    grid-template-columns: 1fr;
+  }
+
+  .advantage-item {
+    padding-left: 60px;
+  }
+
+  .advantage-number {
+    font-size: 36px;
+  }
+
+  .feature-row {
+    grid-template-columns: 1fr;
+  }
+
+  .pabx-cta {
+    padding: 40px 24px;
+  }
+
+  .pabx-cta-form {
+    width: 100%;
+  }
+
+  .pabx-cta-form input {
+    width: 100%;
+  }
+
+  .pabx-cta-form button {
+    width: 100%;
+  }
+
+  .faq-question {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-pabx {
+    padding: 60px 0 40px;
+  }
+
+  .hero-pabx .hero-content h1 {
+    font-size: 28px;
+  }
+
+  .hero-pabx .hero-sub {
+    font-size: 15px;
+  }
+
+  .hero-benefits {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .pabx-card,
+  .usecase,
+  .feature-item {
+    padding: 24px 16px;
+  }
+
+  .card-icon,
+  .usecase-icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .advantage-item {
+    padding-left: 50px;
+  }
+
+  .advantage-number {
+    font-size: 28px;
+  }
+
+  .pabx-cta h2 {
+    font-size: 24px;
+  }
+
+  .pabx-cta {
+    padding: 32px 16px;
+  }
+}
