@@ -1,0 +1,561 @@
+/* ── Integrações Page Styles ─────────────────────────────────── */
+
+/* Hero - Integrações */
+.hero-integracoes {
+  background: linear-gradient(135deg, #0a2540 0%, #1a3a52 100%);
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+  padding: 120px 0 80px;
+}
+
+.hero-integracoes::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(0, 102, 255, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero-integracoes .hero-content h1 {
+  color: var(--white);
+  font-size: clamp(32px, 5vw, 52px);
+  line-height: 1.15;
+  margin-bottom: 24px;
+}
+
+.hero-integracoes .hero-sub {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 18px;
+  max-width: 600px;
+}
+
+.hero-integracoes .hero-badge {
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.hero-highlights {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin-top: 40px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero-highlights li {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Overview Cards */
+.int-overview {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.overview-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 40px 32px;
+  text-align: center;
+  transition: all 0.3s cubic-bezier(0.34, 0.67, 0.68, 1);
+  box-shadow: var(--shadow);
+}
+
+.overview-card:hover {
+  border-color: var(--blue);
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-8px);
+}
+
+.overview-icon {
+  width: 70px;
+  height: 70px;
+  background: var(--blue-light);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  transition: all 0.3s ease;
+}
+
+.overview-card:hover .overview-icon {
+  background: var(--blue);
+}
+
+.overview-card:hover .overview-icon svg {
+  stroke: var(--white);
+}
+
+.overview-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--blue-dark);
+}
+
+.overview-card p {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* Features - Dark Background */
+.int-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+}
+
+.feature-item {
+  padding: 32px 28px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius);
+  transition: all 0.3s ease;
+}
+
+.feature-item:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-4px);
+}
+
+.feature-icon {
+  width: 56px;
+  height: 56px;
+  background: rgba(74, 222, 128, 0.15);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.feature-item:hover .feature-icon {
+  background: rgba(74, 222, 128, 0.3);
+  transform: scale(1.1);
+}
+
+.feature-item h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+.feature-item p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Integrations Grid */
+.int-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.integration-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 40px 28px;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow);
+}
+
+.integration-card:hover {
+  border-color: var(--blue);
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-8px);
+}
+
+.int-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.integration-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--blue-dark);
+  margin-bottom: 12px;
+}
+
+.integration-card p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Benefits Grid */
+.int-benefits {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.benefit-item {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px 28px;
+  position: relative;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.benefit-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--blue) 0%, var(--blue-light) 100%);
+}
+
+.benefit-item:hover {
+  border-color: var(--blue);
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-4px);
+}
+
+.benefit-number {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--blue);
+  background: var(--blue-light);
+  padding: 4px 12px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+}
+
+.benefit-item h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--blue-dark);
+  margin-bottom: 12px;
+}
+
+.benefit-item p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Process Steps */
+.int-process {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+}
+
+.process-step {
+  padding: 32px 28px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.process-step:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-4px);
+}
+
+.step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: rgba(0, 102, 255, 0.15);
+  border: 2px solid rgba(0, 102, 255, 0.3);
+  border-radius: 50%;
+  font-size: 20px;
+  font-weight: 700;
+  color: rgba(0, 102, 255, 0.9);
+  margin-bottom: 16px;
+  transition: all 0.3s ease;
+}
+
+.process-step:hover .step-number {
+  background: rgba(0, 102, 255, 0.25);
+  border-color: rgba(0, 102, 255, 0.5);
+}
+
+.process-step h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+.process-step p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* FAQ Section */
+.int-faq {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--border);
+  padding: 24px 0;
+}
+
+.faq-item:last-child {
+  border-bottom: none;
+}
+
+.faq-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--blue-dark);
+  text-align: left;
+  transition: color 0.2s ease;
+}
+
+.faq-question:hover {
+  color: var(--blue);
+}
+
+.faq-question svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--blue);
+  transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-question svg {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  display: none;
+  padding-top: 16px;
+  color: var(--muted);
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+.faq-item.active .faq-answer {
+  display: block;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* CTA Section */
+.int-cta-section {
+  padding: 80px 0;
+}
+
+.int-cta {
+  background: linear-gradient(135deg, var(--blue-dark) 0%, #1a3a52 100%);
+  color: var(--white);
+  padding: 60px 40px;
+  border-radius: var(--radius);
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.int-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -100px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(0, 102, 255, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.int-cta h2 {
+  font-size: clamp(28px, 4vw, 36px);
+  font-weight: 800;
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.int-cta p {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 32px;
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+
+.int-cta-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.int-cta-form input {
+  padding: 13px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--text);
+}
+
+.int-cta-form input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.2);
+}
+
+.int-cta-form button {
+  align-self: center;
+  min-width: 200px;
+}
+
+.int-cta-note {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+  position: relative;
+  z-index: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-integracoes {
+    padding: 80px 0 60px;
+  }
+
+  .hero-integracoes .hero-content h1 {
+    font-size: 28px;
+  }
+
+  .hero-highlights {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 32px;
+    padding-top: 24px;
+  }
+
+  .int-overview,
+  .int-features,
+  .int-grid,
+  .int-benefits,
+  .int-process {
+    grid-template-columns: 1fr;
+  }
+
+  .int-cta {
+    padding: 40px 24px;
+  }
+
+  .int-cta-form {
+    width: 100%;
+  }
+
+  .int-cta-form input {
+    width: 100%;
+  }
+
+  .int-cta-form button {
+    width: 100%;
+  }
+
+  .overview-card,
+  .benefit-item,
+  .integration-card {
+    padding: 24px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-integracoes {
+    padding: 60px 0 40px;
+  }
+
+  .hero-highlights {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .hero-integracoes .hero-content h1 {
+    font-size: 24px;
+  }
+
+  .hero-integracoes .hero-sub {
+    font-size: 15px;
+  }
+
+  .int-cta h2 {
+    font-size: 24px;
+  }
+
+  .overview-card,
+  .benefit-item,
+  .integration-card,
+  .feature-item,
+  .process-step {
+    padding: 24px 16px;
+  }
+
+  .int-cta {
+    padding: 32px 16px;
+  }
+
+  .benefit-number {
+    font-size: 12px;
+    padding: 3px 10px;
+  }
+}

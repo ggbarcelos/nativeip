@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre a Native — Tecnologia de Comunicação Empresarial</title>
+  <meta name="description" content="Conheça a Native: mais de 20 anos de experiência em soluções de voz, especialistas em provedores de internet e comunicação empresarial.">
+  <link rel="icon" href="img/cropped-Favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ── Sobre — page-specific styles ─────────────────────── */
+    .page-hero {
+      background: linear-gradient(135deg, #071829 0%, #0A2540 45%, #0D3060 100%);
+      padding: 80px 0 88px;
+      position: relative; overflow: hidden;
+    }
+    /* dot grid */
+    .page-hero::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background-image: radial-gradient(circle, rgba(255,255,255,.1) 1px, transparent 1px);
+      background-size: 36px 36px;
+      mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
+    }
+    /* glow top-right */
+    .page-hero::after {
+      content: ''; position: absolute; pointer-events: none;
+      width: 600px; height: 600px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,102,255,.25) 0%, transparent 65%);
+      top: -200px; right: -150px;
+    }
+    /* diagonal accent line */
+    .page-hero-accent {
+      position: absolute; pointer-events: none;
+      width: 2px; height: 300px;
+      background: linear-gradient(to bottom, transparent, rgba(0,102,255,.5), transparent);
+      top: 10%; left: 8%;
+      transform: rotate(20deg);
+    }
+    .page-hero-accent2 {
+      position: absolute; pointer-events: none;
+      width: 300px; height: 2px;
+      background: linear-gradient(to right, transparent, rgba(0,102,255,.3), transparent);
+      bottom: 20%; right: 5%;
+    }
+    /* glow bottom-left */
+    .page-hero-glow {
+      position: absolute; pointer-events: none;
+      width: 350px; height: 350px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,102,255,.15) 0%, transparent 70%);
+      bottom: -100px; left: -80px;
+    }
+    .page-hero .container { position: relative; z-index: 1; }
+    .page-hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .page-hero-text { color: var(--white); }
+    .page-hero-text .label { background: rgba(0,102,255,.3); color: #93C5FD; }
+    .page-hero-text h1 {
+      font-size: clamp(32px, 4vw, 52px); font-weight: 800;
+      line-height: 1.1; margin: 16px 0 20px; letter-spacing: -.02em;
+    }
+    .page-hero-text p { font-size: 17px; color: rgba(255,255,255,.75); line-height: 1.75; margin-bottom: 16px; }
+    .page-hero-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
+    .hero-badge-pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15);
+      color: rgba(255,255,255,.9); font-size: 13px; font-weight: 600;
+      padding: 8px 16px; border-radius: 20px;
+    }
+    .hero-badge-pill svg { color: #60A5FA; }
+    .page-hero-visual {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    }
+    .stat-glass {
+      background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12);
+      border-radius: 16px; padding: 28px 24px; text-align: center;
+      backdrop-filter: blur(8px);
+    }
+    .stat-glass .num { font-size: 40px; font-weight: 800; color: #fff; line-height: 1; }
+    .stat-glass .lbl { font-size: 13px; color: rgba(255,255,255,.6); margin-top: 8px; line-height: 1.4; }
+    .stat-glass.accent { background: rgba(0,102,255,.25); border-color: rgba(0,102,255,.4); }
+    @media (max-width: 1024px) { .page-hero-inner { grid-template-columns: 1fr; gap: 48px; } }
+
+    /* Hero visual — mockup + stats */
+    .page-hero-visual { display: flex; flex-direction: column; align-items: center; gap: 24px; }
+    .sobre-mockup-img {
+      height: 260px; width: auto; object-fit: contain;
+      filter: drop-shadow(0 16px 32px rgba(0,0,0,.4));
+    }
+    .sobre-stats-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%;
+    }
+
+    /* ── Diferenciais ──────────────────────────────────────── */
+    .diferenciais-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+    }
+    .dif-card {
+      background: var(--white); border-radius: var(--radius);
+      padding: 28px 24px; box-shadow: var(--shadow); border: 1px solid var(--border);
+      display: flex; align-items: flex-start; gap: 16px;
+      transition: transform .25s, box-shadow .25s;
+    }
+    .dif-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+    .dif-icon {
+      width: 44px; height: 44px; border-radius: 10px; background: var(--blue-light);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .dif-card h3 { font-size: 15px; font-weight: 700; color: var(--blue-dark); margin-bottom: 6px; }
+    .dif-card p  { font-size: 13px; color: var(--muted); line-height: 1.6; }
+    @media (max-width: 1024px) { .diferenciais-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 600px)  { .diferenciais-grid { grid-template-columns: 1fr; } }
+
+    /* ── Processo ──────────────────────────────────────────── */
+    .processo-section { background: var(--blue-dark); padding: 88px 0; }
+    .processo-grid {
+      display: grid; grid-template-columns: repeat(4,1fr); gap: 0;
+      margin-top: 48px; position: relative;
+    }
+    .processo-grid::before {
+      content: ''; position: absolute; top: 28px; left: 10%; right: 10%; height: 2px;
+      background: linear-gradient(to right, rgba(0,102,255,.6), rgba(0,102,255,.2));
+      z-index: 0;
+    }
+    .processo-step {
+      text-align: center; padding: 0 16px; position: relative; z-index: 1;
+    }
+    .step-num {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: var(--blue); color: #fff;
+      font-size: 20px; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px; border: 3px solid rgba(255,255,255,.15);
+      box-shadow: 0 0 0 6px rgba(0,102,255,.2);
+    }
+    .processo-step h3 { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+    .processo-step p  { font-size: 13px; color: rgba(255,255,255,.6); line-height: 1.6; }
+    @media (max-width: 768px) {
+      .processo-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .processo-grid::before { display: none; }
+    }
+    @media (max-width: 480px) { .processo-grid { grid-template-columns: 1fr; } }
+
+    /* ── CTA banner ────────────────────────────────────────── */
+    .sobre-cta {
+      background: linear-gradient(135deg, #0066FF 0%, #0A2540 100%);
+      padding: 72px 0; text-align: center; color: #fff;
+    }
+    .sobre-cta h2 { font-size: clamp(24px,3vw,36px); font-weight: 800; margin-bottom: 16px; }
+    .sobre-cta p  { font-size: 17px; color: rgba(255,255,255,.75); margin-bottom: 32px; }
+    .sobre-cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  </style>
+</head>
+<body>
+
+<main>
+
+<!-- ── Page Hero ─────────────────────────────────────────── -->
+<section class="page-hero">
+  <div class="page-hero-accent"></div>
+  <div class="page-hero-accent2"></div>
+  <div class="page-hero-glow"></div>
+  <div class="container">
+    <div class="page-hero-inner">
+      <div class="page-hero-text fade-in">
+        <span class="label">Conheça a Native</span>
+        <h1>Tecnologia de plataformas de comunicação</h1>
+        <p>Formada por um time de especialistas com mais de 20 anos de experiência em soluções de voz, a Native é referência no fornecimento de tecnologias de comunicação que aproximam empresas e clientes de todos os segmentos.</p>
+        <p>A equipe está alinhada ao conceito de CS (customer success), buscando constantemente o sucesso dos clientes em todo o Brasil.</p>
+        <div class="page-hero-badges">
+          <span class="hero-badge-pill"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>20+ anos em soluções de voz</span>
+          <span class="hero-badge-pill"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>14+ anos com Asterisk</span>
+          <span class="hero-badge-pill"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>22 estados atendidos</span>
+          <span class="hero-badge-pill"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Software Seguro</span>
+        </div>
+      </div>
+      <div class="page-hero-visual fade-in" style="transition-delay:.15s">
+        <img src="img/Mockup-Celular-Native-min.png" alt="Plataforma NativeIP" class="sobre-mockup-img">
+        <div class="sobre-stats-grid">
+          <div class="stat-glass">
+            <div class="num" data-target="20" data-suffix="+">0+</div>
+            <div class="lbl">Anos em Soluções de Voz</div>
+          </div>
+          <div class="stat-glass">
+            <div class="num" data-target="14" data-suffix="+">0+</div>
+            <div class="lbl">Anos com Asterisk</div>
+          </div>
+          <div class="stat-glass accent">
+            <div class="num" data-target="22749" data-suffix="">0</div>
+            <div class="lbl">Ramais em Cloud</div>
+          </div>
+          <div class="stat-glass">
+            <div class="num" data-target="22" data-suffix="">0</div>
+            <div class="lbl">Estados Atendidos</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Diferenciais ───────────────────────────────────────── -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="text-center">
+      <span class="label fade-in">Por que a Native</span>
+      <h2 class="section-title fade-in">Desenvolvimento próprio e qualificado</h2>
+      <p class="section-sub fade-in">Cada solução é construída internamente, garantindo qualidade, segurança e evolução contínua para nossos clientes.</p>
+    </div>
+    <div class="diferenciais-grid">
+      <div class="dif-card fade-in">
+        <div class="dif-icon"><svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#0066FF" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+        <div>
+          <h3>Sistema Próprio</h3>
+          <p>Plataforma desenvolvida internamente, com total controle sobre evolução, segurança e personalização para cada cliente.</p>
+        </div>
+      </div>
+      <div class="dif-card fade-in" style="transition-delay:.05s">
+        <div class="dif-icon"><svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#0066FF" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/></svg></div>
+        <div>
+          <h3>Suporte Personalizado</h3>
+          <p>Atendimento dedicado com equipe técnica especializada, pronta para resolver demandas com agilidade e eficiência.</p>
+        </div>
+      </div>
+      <div class="dif-card fade-in" style="transition-delay:.1s">
+        <div class="dif-icon"><svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#0066FF" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+        <div>
+          <h3>Equipe Qualificada</h3>
+          <p>Profissionais com vasta experiência em telecomunicações, desenvolvimento de software e customer success.</p>
+        </div>
+      </div>
+      <div class="dif-card fade-in" style="transition-delay:.15s">
+        <div class="dif-icon"><svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#0066FF" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+        <div>
+          <h3>Atuação Nacional</h3>
+          <p>Presente em todo o Brasil, atendendo empresas e provedores de internet de todos os portes e segmentos.</p>
+        </div>
+      </div>
+      <div class="dif-card fade-in" style="transition-delay:.2s">
+        <div class="dif-icon"><svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#0066FF" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg></div>
+        <div>
+          <h3>Customer Success</h3>
+          <p>Metodologia CS aplicada em cada projeto, garantindo que o cliente alcance os resultados esperados com nossas soluções.</p>
+        </div>
+      </div>
+      <div class="dif-card fade-in" style="transition-delay:.25s">
+        <div class="dif-icon"><svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#0066FF" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div>
+        <div>
+          <h3>Software Seguro</h3>
+          <p>Infraestrutura robusta com criptografia, redundância e conformidade com LGPD para proteger os dados da sua empresa.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Processo ───────────────────────────────────────────── -->
+<section class="processo-section">
+  <div class="container">
+    <div class="text-center">
+      <span class="label fade-in" style="background:rgba(0,102,255,.3);color:#93C5FD">Nossa Metodologia</span>
+      <h2 class="section-title fade-in" style="color:#fff">Processo de Atuação Native</h2>
+      <p class="section-sub fade-in" style="color:rgba(255,255,255,.65)">Cada etapa tem papel fundamental no resultado final. Nossa sistemática visa maior assertividade em propostas e ações.</p>
+    </div>
+    <div class="processo-grid">
+      <div class="processo-step fade-in">
+        <div class="step-num">1</div>
+        <h3>Compreensão da Demanda</h3>
+        <p>Ouvimos e entendemos profundamente a necessidade do cliente antes de propor qualquer solução.</p>
+      </div>
+      <div class="processo-step fade-in" style="transition-delay:.1s">
+        <div class="step-num">2</div>
+        <h3>Definição da Proposta</h3>
+        <p>A preocupação em oferecer a melhor solução para a dor do cliente resulta nas propostas mais adequadas às necessidades.</p>
+      </div>
+      <div class="processo-step fade-in" style="transition-delay:.2s">
+        <div class="step-num">3</div>
+        <h3>Planejamento e Execução</h3>
+        <p>As equipes técnica e de consultores atuam junto ao cliente para planejar e executar o projeto definido.</p>
+      </div>
+      <div class="processo-step fade-in" style="transition-delay:.3s">
+        <div class="step-num">4</div>
+        <h3>Melhoria Contínua</h3>
+        <p>O acompanhamento das ferramentas em uso garante o atingimento dos resultados esperados por ambas as partes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ───────────────────────────────────────────────── -->
+<section class="sobre-cta">
+  <div class="container fade-in">
+    <h2>Proporcionamos diferenciais estratégicos para clientes e parceiros</h2>
+    <p>Agende uma demonstração e conheça o potencial de transformação que nossas plataformas podem proporcionar.</p>
+    <div class="sobre-cta-btns">
+      <a href="index.html#contato" class="btn btn-primary">Agendar Demonstração</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script src="js/components-loader.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
