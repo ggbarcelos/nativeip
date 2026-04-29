@@ -230,12 +230,18 @@
       .hero-card.card-2 { right: 0; }
     }
     @media (max-width: 768px) {
-      .hero-inner { grid-template-columns: 1fr; gap: 32px; }
-      .hero-visual { height: 320px; }
-      .hero-blob { width: 280px; height: 280px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 24px; }
+      .hero-visual { height: 200px; }
+      .hero-visual img { max-height: 200px; }
+      .hero-blob { width: 180px; height: 180px; }
       .hero-card { display: none; }
       .hero { padding: 48px 0 64px; }
       .hero-btns { margin-bottom: 20px; }
+    }
+    @media (max-width: 480px) {
+      .hero-visual { display: none; }
+      .hero-sub { font-size: 16px; margin-bottom: 24px; }
+      .hero h1 { font-size: 32px; margin-bottom: 16px; }
     }
 
     /* ── Hero Quick Links ──────────────────────────────────── */
