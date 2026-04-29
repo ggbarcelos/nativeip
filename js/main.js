@@ -16,6 +16,14 @@
     });
   });
 
+  // ── Card Expansion ──────────────────────────────────────────
+  document.querySelectorAll('[data-expandable]').forEach(card => {
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', () => {
+      card.classList.toggle('expanded');
+    });
+  });
+
   // ── CountUp ────────────────────────────────────────────────
   function countUp(el, target, suffix, duration) {
     const start = performance.now();

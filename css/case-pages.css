@@ -453,18 +453,79 @@ nav {
 /* Footer */
 footer {
   background: var(--dark);
-  color: white;
-  padding: 40px;
-  text-align: center;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.75);
+  padding: 64px 0 0;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 48px;
+  padding: 0 40px 48px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-brand p {
+  font-size: 14px;
+  line-height: 1.7;
+  max-width: 280px;
+}
+
+.footer-col h4 {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.footer-col ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-col a {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  transition: color 0.2s;
+}
+
+.footer-col a:hover {
+  color: #fff;
+}
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.4);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.footer-bottom-links {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-bottom-links a {
+  color: rgba(255, 255, 255, 0.4);
+  transition: color 0.2s;
+}
+
+.footer-bottom-links a:hover {
+  color: rgba(255, 255, 255, 0.8);
 }
 
 /* Footer Desenvolvido Por Section */
 .footer-developed-section {
-  background: var(--white);
+  background: #f8f9fa;
+  border-top: 1px solid #e5e7eb;
   padding: 16px 40px;
-  text-align: right;
-  border-top: 1px solid var(--gray);
 }
 
 .footer-developed-section a {
@@ -485,6 +546,16 @@ footer {
 .footer-developed-section img {
   height: 24px;
   width: auto;
+}
+
+/* Footer Brand */
+.footer-brand {
+  padding: 0;
+}
+
+.footer-brand img {
+  height: 44px;
+  margin-bottom: 16px;
 }
 
 /* Responsive */
