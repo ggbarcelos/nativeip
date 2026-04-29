@@ -100,9 +100,9 @@ function initNavbarEvents() {
       // Se o link contém âncora (seção) e não está em index.html
       if (href && href.includes('#') && !window.location.pathname.includes('index.html')) {
         e.preventDefault();
-        // Navega para index.html com a âncora
+        // Navega para index.html com a âncora usando caminho relativo
         const anchor = href.split('#')[1];
-        window.location.href = '/index.html#' + anchor;
+        window.location.href = './index.html#' + anchor;
       }
     });
   });
