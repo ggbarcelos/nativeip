@@ -2,44 +2,55 @@
 // Carrega navbar e footer - funciona localmente e em servidor
 
 function loadComponents() {
-  // Função auxiliar para carregar arquivo
-  function loadFile(path) {
+  // Função auxiliar para carregar arquivo com múltiplos caminhos
+  function loadFile(paths) {
+    if (!Array.isArray(paths)) {
+      paths = [paths];
+    }
+    
     return new Promise((resolve, reject) => {
-      const xhr = new XMLHttpRequest();
-      xhr.onload = () => {
-        if (xhr.status >= 200 && xhr.status < 300) {
-          resolve(xhr.responseText);
-        } else {
-          reject(new Error(`Status ${xhr.status} ao carregar ${path}`));
+      function tryLoad(index) {
+        if (index >= paths.length) {
+          reject(new Error(`Nenhum caminho funcionou para: ${paths.join(', ')}`));
+          return;
         }
-      };
-      xhr.onerror = () => reject(new Error(`Erro ao carregar ${path}`));
-      xhr.open('GET', path, true);
-      xhr.send();
+        
+        const path = paths[index];
+        const xhr = new XMLHttpRequest();
+        
+        xhr.onload = () => {
+          if (xhr.status >= 200 && xhr.status < 300) {
+            resolve(xhr.responseText);
+          } else {
+            tryLoad(index + 1);
+          }
+        };
+        
+        xhr.onerror = () => {
+          tryLoad(index + 1);
+        };
+        
+        xhr.open('GET', path, true);
+        xhr.send();
+      }
+      
+      tryLoad(0);
     });
   }
   
-  // Carrega navbar
-  loadFile('./components/navbar.html')
+  // Carrega navbar com múltiplos caminhos possíveis
+  loadFile(['./components/navbar.html', '../components/navbar.html'])
     .then(navbarHTML => {
       const body = document.body;
       body.insertAdjacentHTML('afterbegin', navbarHTML);
       initNavbarEvents();
     })
     .catch(error => {
-      console.error('Erro ao carregar navbar:', error);
-      // Tenta caminho alternativo
-      loadFile('../components/navbar.html')
-        .then(navbarHTML => {
-          const body = document.body;
-          body.insertAdjacentHTML('afterbegin', navbarHTML);
-          initNavbarEvents();
-        })
-        .catch(e => console.error('Falha na segunda tentativa:', e));
+      console.warn('Aviso: Não foi possível carregar navbar:', error.message);
     });
   
-  // Carrega footer
-  loadFile('./components/footer.html')
+  // Carrega footer com múltiplos caminhos possíveis
+  loadFile(['./components/footer.html', '../components/footer.html'])
     .then(footerHTML => {
       const main = document.querySelector('main');
       if (main) {
@@ -47,16 +58,7 @@ function loadComponents() {
       }
     })
     .catch(error => {
-      console.error('Erro ao carregar footer:', error);
-      // Tenta caminho alternativo
-      loadFile('../components/footer.html')
-        .then(footerHTML => {
-          const main = document.querySelector('main');
-          if (main) {
-            main.insertAdjacentHTML('afterend', footerHTML);
-          }
-        })
-        .catch(e => console.error('Falha na segunda tentativa:', e));
+      console.warn('Aviso: Não foi possível carregar footer:', error.message);
     });
 }
 

@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cases de Sucesso - Premium Design</title>
+    <style>
+        :root {
+            --orange: #F34E00;
+            --white: #FFFFFF;
+            --blue-dark: #0222A4;
+            --black: #000000;
+            --text-dark: #333;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+            padding: 100px 20px;
+        }
+        .container { max-width: 1400px; margin: 0 auto; position: relative; z-index: 1; }
+
+        .section-title {
+            text-align: center;
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--black);
+            margin-bottom: 16px;
+            letter-spacing: -1.5px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 60px;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 40px;
+        }
+
+        .case-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .case-card:hover {
+            box-shadow: 0 25px 60px rgba(243, 78, 0, 0.2);
+            transform: translateY(-8px);
+            border-color: rgba(243, 78, 0, 0.3);
+        }
+
+        .case-header {
+            position: relative;
+            padding: 24px 32px;
+            background: linear-gradient(135deg, var(--orange) 0%, #ff6b35 100%);
+            color: var(--white);
+            text-align: center;
+            overflow: hidden;
+            z-index: 2;
+        }
+
+        .case-header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+            z-index: 0;
+        }
+
+        .case-header::after {
+            content: '';
+            position: absolute;
+            top: -50%; right: -50%;
+            width: 200%; height: 200%;
+            background: repeating-linear-gradient(
+                45deg, transparent, transparent 35px,
+                rgba(255, 255, 255, 0.05) 35px,
+                rgba(255, 255, 255, 0.05) 70px
+            );
+            animation: slidePattern 20s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes slidePattern {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(70px, 70px); }
+        }
+
+        .case-info { position: relative; z-index: 2; }
+        .case-company { font-size: 28px; font-weight: 800; margin: 0; letter-spacing: -0.5px; }
+        .case-category { font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-top: 8px; opacity: 0.95; }
+
+        .case-content { padding: 0; display: flex; flex-direction: column; flex: 1; }
+
+        .case-tabs {
+            display: flex;
+            gap: 0;
+            background: #f8f9fa;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+            padding: 0;
+            margin: 0;
+        }
+
+        .case-tab-btn {
+            flex: 1;
+            background: transparent;
+            border: none;
+            padding: 14px 16px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #999;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            overflow: hidden;
+        }
+
+        .case-tab-btn:last-child {
+            margin-right: 12px;
+        }
+
+        .case-tab-btn:hover {
+            background: rgba(243, 78, 0, 0.04);
+            color: var(--orange);
+        }
+
+        .case-tab-btn.active {
+            color: var(--orange);
+            background: rgba(243, 78, 0, 0.08);
+        }
+
+        .case-tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--orange) 0%, #ff6b35 100%);
+            animation: expandWidth 0.3s ease;
+        }
+
+        @keyframes expandWidth {
+            from { width: 0; } to { width: 100%; }
+        }
+
+        .case-tab-content {
+            display: none;
+            padding: 32px;
+            line-height: 1.8;
+            color: var(--text-dark);
+            flex: 1;
+            animation: fadeInContent 0.4s ease;
+            font-size: 14px;
+        }
+
+        .case-tab-content.active { display: block; }
+
+        @keyframes fadeInContent {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .case-tab-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .case-tab-content li {
+            line-height: 1.7;
+            color: #555;
+            font-size: 14px;
+            padding-left: 28px;
+            position: relative;
+            font-weight: 500;
+        }
+
+        .case-tab-content li::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 7px;
+            width: 8px; height: 8px;
+            background: linear-gradient(135deg, var(--orange) 0%, #ff6b35 100%);
+            border-radius: 50%;
+            opacity: 0.8;
+        }
+
+        .case-quote {
+            margin-top: 20px;
+            padding: 20px 24px;
+            background: linear-gradient(135deg, rgba(243, 78, 0, 0.06) 0%, rgba(2, 34, 164, 0.04) 100%);
+            border-left: 4px solid var(--orange);
+            border-radius: 12px;
+            font-style: italic;
+            color: #555;
+            font-size: 13px;
+            line-height: 1.8;
+            margin: 0;
+            position: relative;
+        }
+
+        .case-quote::before {
+            content: '"';
+            font-size: 40px;
+            color: var(--orange);
+            opacity: 0.3;
+            position: absolute;
+            top: -8px; left: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="section-title">Cases de Sucesso</h2>
+        <p class="section-subtitle">Histórias reais de empresas transformadas pela plataforma Native</p>
+
+        <div class="cases-grid">
+            <div class="case-card">
+                <div class="case-header">
+                    <div class="case-info">
+                        <div class="case-company">BR Super</div>
+                        <div class="case-category">Provedora de Internet</div>
+                    </div>
+                </div>
+                <div class="case-content">
+                    <div class="case-tabs">
+                        <button class="case-tab-btn active" data-tab="br-scenario">Cenário</button>
+                        <button class="case-tab-btn" data-tab="br-problem">Problema</button>
+                        <button class="case-tab-btn" data-tab="br-solution">Solução</button>
+                        <button class="case-tab-btn" data-tab="br-benefits">Benefícios</button>
+                    </div>
+                    <div class="case-tab-content active" data-tab="br-scenario">
+                        <p>BR Super é uma provedora de internet em expansão que precisava acompanhar o crescimento acelerado de sua base de clientes com uma plataforma de comunicação moderna, estável e fácil de usar.</p>
+                    </div>
+                    <div class="case-tab-content" data-tab="br-problem">
+                        <ul>
+                            <li>Integração de diferentes frentes de atendimento em solução única</li>
+                            <li>Garantir estabilidade e evitar sistemas fragmentados</li>
+                            <li>Obter agilidade nas informações para decisões estratégicas</li>
+                        </ul>
+                    </div>
+                    <div class="case-tab-content" data-tab="br-solution">
+                        <ul>
+                            <li>Comunicação unificada, eliminando ferramentas dispersas</li>
+                            <li>Interface simples e intuitiva para adoção rápida</li>
+                            <li>Suporte contínuo de alta confiabilidade</li>
+                        </ul>
+                    </div>
+                    <div class="case-tab-content" data-tab="br-benefits">
+                        <ul>
+                            <li>Maior clareza e agilidade nas operações</li>
+                            <li>Eficiência ampliada da equipe com processos mais enxutos</li>
+                            <li>Alinhamento cultural refletindo inovação</li>
+                        </ul>
+                        <div class="case-quote">"O principal motivo foi a confiança e consistência. As entregas impactaram diretamente nossos resultados."</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="case-card">
+                <div class="case-header">
+                    <div class="case-info">
+                        <div class="case-company">Mell Internet</div>
+                        <div class="case-category">Provedora de Internet</div>
+                    </div>
+                </div>
+                <div class="case-content">
+                    <div class="case-tabs">
+                        <button class="case-tab-btn active" data-tab="mell-scenario">Cenário</button>
+                        <button class="case-tab-btn" data-tab="mell-problem">Problema</button>
+                        <button class="case-tab-btn" data-tab="mell-solution">Solução</button>
+                        <button class="case-tab-btn" data-tab="mell-benefits">Benefícios</button>
+                    </div>
+                    <div class="case-tab-content active" data-tab="mell-scenario">
+                        <p>Mell Internet é uma provedora regional que buscava aprimorar a qualidade do atendimento ao cliente e obter maior controle de gestão com dados confiáveis.</p>
+                    </div>
+                    <div class="case-tab-content" data-tab="mell-problem">
+                        <ul>
+                            <li>Sistemas fragmentados dificultando a visão única</li>
+                            <li>Equipes sem integração adequada</li>
+                            <li>Falta de relatórios consolidados</li>
+                        </ul>
+                    </div>
+                    <div class="case-tab-content" data-tab="mell-solution">
+                        <ul>
+                            <li>Implementação da plataforma unificada Native</li>
+                            <li>Integração PABX Virtual + Call Center</li>
+                            <li>Dashboard centralizado com insights</li>
+                        </ul>
+                    </div>
+                    <div class="case-tab-content" data-tab="mell-benefits">
+                        <ul>
+                            <li>Redução de 40% no tempo de atendimento</li>
+                            <li>Aumento significativo da satisfação</li>
+                            <li>Melhor controle operacional</li>
+                        </ul>
+                        <div class="case-quote">"A Native nos permitiu crescer sem aumentar custos proporcionalmente."</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="case-card">
+                <div class="case-header">
+                    <div class="case-info">
+                        <div class="case-company">Tuxnet</div>
+                        <div class="case-category">Telecomunicações</div>
+                    </div>
+                </div>
+                <div class="case-content">
+                    <div class="case-tabs">
+                        <button class="case-tab-btn active" data-tab="tux-scenario">Cenário</button>
+                        <button class="case-tab-btn" data-tab="tux-problem">Problema</button>
+                        <button class="case-tab-btn" data-tab="tux-solution">Solução</button>
+                        <button class="case-tab-btn" data-tab="tux-benefits">Benefícios</button>
+                    </div>
+                    <div class="case-tab-content active" data-tab="tux-scenario">
+                        <p>Empresa em expansão buscando modernizar sua infraestrutura de comunicação para competir no mercado.</p>
+                    </div>
+                    <div class="case-tab-content" data-tab="tux-problem">
+                        <ul>
+                            <li>Sistemas legados obsoletos</li>
+                            <li>Falta de integração entre canais</li>
+                            <li>Produtividade baixa em processos</li>
+                        </ul>
+                    </div>
+                    <div class="case-tab-content" data-tab="tux-solution">
+                        <ul>
+                            <li>Migração para plataforma Native</li>
+                            <li>PABX Virtual com inteligência artificial</li>
+                            <li>Automação de processos repetitivos</li>
+                        </ul>
+                    </div>
+                    <div class="case-tab-content" data-tab="tux-benefits">
+                        <ul>
+                            <li>Aumento de 60% em produtividade</li>
+                            <li>Redução de custos operacionais</li>
+                            <li>Escalabilidade para crescimento futuro</li>
+                        </ul>
+                        <div class="case-quote">"A melhor decisão que tomamos. Transformou nossa operação completamente."</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="case-card">
+                <div class="case-header">
+                    <div class="case-info">
+                        <div class="case-company">Infinity ISP</div>
+                        <div class="case-category">Provedora de Internet</div>
+                    </div>
+                </div>
+                <div class="case-content">
+                    <div class="case-tabs">
+                        <button class="case-tab-btn active" data-tab="inf-scenario">Cenário</button>
+                        <button class="case-tab-btn" data-tab="inf-problem">Problema</button>
+                        <button class="case-tab-btn" data-tab="inf-solution">Solução</button>
+                        <button class="case-tab-btn" data-tab="inf-benefits">Benefícios</button>
+                    </div>
+                    <div class="case-tab-content active" data-tab="inf-scenario">
+                        <p>Provedora consolidada buscando melhorar experiência do cliente e reduzir cancelamentos.</p>
+                    </div>
+                    <div class="case-tab-content" data-tab="inf-problem">
+                        <ul>
+                            <li>Atendimento fragmentado em canais</li>
+                            <li>Suporte técnico lento e ineficiente</li>
+                            <li>Perda de clientes para concorrência</li>
+                        </ul>
+                    </div>
+                    <div class="case-tab-content" data-tab="inf-solution">
+                        <ul>
+                            <li>Central unificada na plataforma Native</li>
+                            <li>Suporte técnico integrado</li>
+                            <li>Automação inteligente de resposta</li>
+                        </ul>
+                    </div>
+                    <div class="case-tab-content" data-tab="inf-benefits">
+                        <ul>
+                            <li>Satisfação de clientes +45%</li>
+                            <li>Retenção melhorada significativamente</li>
+                            <li>Crescimento sustentável da base</li>
+                        </ul>
+                        <div class="case-quote">"Native é essencial para nosso negócio. Melhor atendimento do mercado."</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.case-tab-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const card = this.closest('.case-card');
+                const tabName = this.dataset.tab;
+                
+                card.querySelectorAll('.case-tab-btn').forEach(b => b.classList.remove('active'));
+                card.querySelectorAll('.case-tab-content').forEach(c => c.classList.remove('active'));
+                
+                this.classList.add('active');
+                card.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
